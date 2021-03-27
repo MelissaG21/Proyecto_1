@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: rgb(248, 230, 222);">
+    <h1 style="color: darkslategrey;">Manejo de mesas de billar</h1>
+    <table>
+        <thead>
+            <tr>
+                <th><h2 style="color: darkslategrey;">Mesa 1</h2></th>
+                <th><h2 style="color: darkslategrey;">Mesa 2</h2></th>
+                <th><h2 style="color: darkslategrey;">Mesa 3</h2></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><img src="imagenes/mesaOff.png" id="mesa1" onclick="mesaBillar('mesa1');"></td>
+                <td><img src="imagenes/mesaOff.png" id="mesa2" onclick="mesaBillar('mesa2');"></td>
+                <td><img src="imagenes/mesaOff.png" id="mesa3" onclick="mesaBillar('mesa3');"></td>
+            </tr>
+            <tr>
+                <td>Hora de inicio: <a id="horaImprimibleInicial1"></a></td>
+                <td>Hora de inicio: <a id="horaImprimibleInicial2"></a></td>
+                <td>Hora de inicio: <a id="horaImprimibleInicial3"></a></td>
+            </tr>
+            <tr>
+                <td>Hora de final: <a id="horaFinal1"></a></td>
+                <td>Hora de final: <a id="horaFinal2"></a></td>
+                <td>Hora de final: <a id="horaFinal3"></a></td>
+            </tr>
+            <tr>
+                <td>Total: <a id="total1"></a></td>
+                <td>Total: <a id="total2"></a></td>
+                <td>Total: <a id="total3"></a></td>
+            </tr>
+        </tbody>
+        <thead>
+            <tr>
+                <th><h2 style="color: darkslategrey;">Mesa 4</h2></th>
+                <th><h2 style="color: darkslategrey;">Mesa 5</h2></th>
+                <th><h2 style="color: darkslategrey;">Mesa 6</h2></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><img src="imagenes/mesaOff.png" id="mesa4" onclick="mesaBillar('mesa4');"></td>
+                <td><img src="imagenes/mesaOff.png" id="mesa5" onclick="mesaBillar('mesa5');"></td>
+                <td><img src="imagenes/mesaOff.png" id="mesa6" onclick="mesaBillar('mesa6');"></td>
+            </tr>
+            <tr>
+                <td>Hora de inicio: <a id="horaImprimibleInicial4"></a></td>
+                <td>Hora de inicio: <a id="horaImprimibleInicial5"></a></td>
+                <td>Hora de inicio: <a id="horaImprimibleInicial6"></a></td>
+            </tr>
+            <tr>
+                <td>Hora de final: <a id="horaFinal4"></a></td>
+                <td>Hora de final: <a id="horaFinal5"></a></td>
+                <td>Hora de final: <a id="horaFinal6"></a></td>
+            </tr>
+            <tr>
+                <td>Total: <a id="total4"></a></td>
+                <td>Total: <a id="total5"></a></td>
+                <td>Total: <a id="total6"></a></td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        var horaInicial1, minutoInicial1;
+        var horaInicial2, minutoInicial2;
+        var horaInicial3, minutoInicial3;
+        var horaInicial4, minutoInicial4;
+        var horaInicial5, minutoInicial5;
+        var horaInicial6, minutoInicial6;
+        const mesaBillar = (numeroMesa) => {
+            let horaImprimibleInicial, horaImprimibleFinal;
+            let horaFinal, minutoFinal;
+            let costoFinal;
+            let foto;
+            switch(numeroMesa){
+                case 'mesa1':
+                    foto = document.getElementById("mesa1");
+                    if (foto.src.match('mesaOff')){
+                        foto.src="imagenes/mesaOn.png"
+                        horaInicial1 = actualizarHora();
+                        minutoInicial1 = actualizarMinuto();
+                        horaImprimibleInicial = horaInicial1+" : "+minutoInicial1
+                        document.getElementById("horaImprimibleInicial1").innerHTML=horaImprimibleInicial;
+                        horaImprimibleFinal = "0 : 0"
+                        document.getElementById("horaFinal1").innerHTML=horaImprimibleFinal;
+                        costoTotal = "0"
+                        document.getElementById("total1").innerHTML=costoTotal;
+                    }else {
+                        foto.src="imagenes/mesaOff.png"
+                        horaFinal = actualizarHora();
+                        minutoFinal = actualizarMinuto();
+                        horaImprimibleFinal = horaFinal+" : "+minutoFinal
+                        document.getElementById("horaFinal1").innerHTML=horaImprimibleFinal;
+                        costoTotal = ((horaFinal-horaInicial1)*50)+((minutoFinal-minutoInicial1)*50)/60;
+                        document.getElementById("total1").innerHTML=costoTotal;
+                    }
+                break;
+                case 'mesa2':
+                    foto = document.getElementById("mesa2");
+                    if (foto.src.match('mesaOff')){
+                        foto.src="imagenes/mesaOn.png"
+                        horaInicial2 = actualizarHora();
+                        minutoInicial2 = actualizarMinuto();
+                        horaImprimibleInicial = horaInicial2+" : "+minutoInicial2
+                        document.getElementById("horaImprimibleInicial2").innerHTML=horaImprimibleInicial;
+                        horaImprimibleFinal = "0 : 0"
+                        document.getElementById("horaFinal2").innerHTML=horaImprimibleFinal;
+                        costoTotal = "0"
+                        document.getElementById("total2").innerHTML=costoTotal;
+                    }else {
+                        foto.src="imagenes/mesaOff.png"
+                        horaFinal = actualizarHora();
+                        minutoFinal = actualizarMinuto();
+                        horaImprimibleFinal = horaFinal+" : "+minutoFinal
+                        document.getElementById("horaFinal2").innerHTML=horaImprimibleFinal;
+                        costoTotal = ((horaFinal-horaInicial2)*50)+((minutoFinal-minutoInicial2)*50)/60;
+                        document.getElementById("total2").innerHTML=costoTotal;
+                    }
+                break;
+                case 'mesa3':
+                    foto = document.getElementById("mesa3");
+                    if (foto.src.match('mesaOff')){
+                        foto.src="imagenes/mesaOn.png"
+                        horaInicial3 = actualizarHora();
+                        minutoInicial3 = actualizarMinuto();
+                        horaImprimibleInicial = horaInicial3+" : "+minutoInicial3
+                        document.getElementById("horaImprimibleInicial3").innerHTML=horaImprimibleInicial;
+                        horaImprimibleFinal = "0 : 0"
+                        document.getElementById("horaFinal3").innerHTML=horaImprimibleFinal;
+                        costoTotal = "0"
+                        document.getElementById("total3").innerHTML=costoTotal;
+                    }else {
+                        foto.src="imagenes/mesaOff.png"
+                        horaFinal = actualizarHora();
+                        minutoFinal = actualizarMinuto();
+                        horaImprimibleFinal = horaFinal+" : "+minutoFinal
+                        document.getElementById("horaFinal3").innerHTML=horaImprimibleFinal;
+                        costoTotal = ((horaFinal-horaInicial3)*50)+((minutoFinal-minutoInicial3)*50)/60;
+                        document.getElementById("total3").innerHTML=costoTotal;
+                    }
+                break;
+                case 'mesa4':
+                    foto = document.getElementById("mesa4");
+                    if (foto.src.match('mesaOff')){
+                        foto.src="imagenes/mesaOn.png"
+                        horaInicial4 = actualizarHora();
+                        minutoInicial4 = actualizarMinuto();
+                        horaImprimibleInicial = horaInicial4+" : "+minutoInicial4
+                        document.getElementById("horaImprimibleInicial4").innerHTML=horaImprimibleInicial;
+                        horaImprimibleFinal = "0 : 0"
+                        document.getElementById("horaFinal4").innerHTML=horaImprimibleFinal;
+                        costoTotal = "0"
+                        document.getElementById("total4").innerHTML=costoTotal;
+                    }else {
+                        foto.src="imagenes/mesaOff.png"
+                        horaFinal = actualizarHora();
+                        minutoFinal = actualizarMinuto();
+                        horaImprimibleFinal = horaFinal+" : "+minutoFinal
+                        document.getElementById("horaFinal4").innerHTML=horaImprimibleFinal;
+                        costoTotal = ((horaFinal-horaInicial4)*50)+((minutoFinal-minutoInicial4)*50)/60;
+                        document.getElementById("total4").innerHTML=costoTotal;
+                    }
+                break;
+                case 'mesa5':
+                    foto = document.getElementById("mesa5");
+                    if (foto.src.match('mesaOff')){
+                        foto.src="imagenes/mesaOn.png"
+                        horaInicial5 = actualizarHora();
+                        minutoInicial5 = actualizarMinuto();
+                        horaImprimibleInicial = horaInicial5+" : "+minutoInicial5
+                        document.getElementById("horaImprimibleInicial5").innerHTML=horaImprimibleInicial;
+                        horaImprimibleFinal = "0 : 0"
+                        document.getElementById("horaFinal5").innerHTML=horaImprimibleFinal;
+                        costoTotal = "0"
+                        document.getElementById("total5").innerHTML=costoTotal;
+                    }else {
+                        foto.src="imagenes/mesaOff.png"
+                        horaFinal = actualizarHora();
+                        minutoFinal = actualizarMinuto();
+                        horaImprimibleFinal = horaFinal+" : "+minutoFinal
+                        document.getElementById("horaFinal5").innerHTML=horaImprimibleFinal;
+                        costoTotal = ((horaFinal-horaInicial5)*50)+((minutoFinal-minutoInicial5)*50)/60;
+                        document.getElementById("total5").innerHTML=costoTotal;
+                    }
+                break;
+                case 'mesa6':
+                    foto = document.getElementById("mesa6");
+                    if (foto.src.match('mesaOff')){
+                        foto.src="imagenes/mesaOn.png"
+                        horaInicial6 = actualizarHora();
+                        minutoInicial6 = actualizarMinuto();
+                        horaImprimibleInicial = horaInicial6+" : "+minutoInicial6
+                        document.getElementById("horaImprimibleInicial6").innerHTML=horaImprimibleInicial;
+                        horaImprimibleFinal = "0 : 0"
+                        document.getElementById("horaFinal6").innerHTML=horaImprimibleFinal;
+                        costoTotal = "0"
+                        document.getElementById("total6").innerHTML=costoTotal;
+                    }else {
+                        foto.src="imagenes/mesaOff.png"
+                        horaFinal = actualizarHora();
+                        minutoFinal = actualizarMinuto();
+                        horaImprimibleFinal = horaFinal+" : "+minutoFinal
+                        document.getElementById("horaFinal6").innerHTML=horaImprimibleFinal;
+                        costoTotal = ((horaFinal-horaInicial6)*50)+((minutoFinal-minutoInicial6)*50)/60;
+                        document.getElementById("total6").innerHTML=costoTotal;
+                    }
+                break;
+            }
+        }
+        const actualizarHora = () => {
+            momentoActual = new Date()
+            hora = momentoActual.getHours()
+            return hora;
+        }
+        
+        const actualizarMinuto = () => {
+            momentoActual = new Date()
+            minuto = momentoActual.getMinutes()
+            return minuto;
+        }
+    </script>
+</body>
+</html>
